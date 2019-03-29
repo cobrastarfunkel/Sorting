@@ -12,11 +12,14 @@ int main()
 
   const int SIZE = 100;
   int nums[SIZE];
+
   for(int i = 0; i < SIZE; i++)
     nums[i] = rand() % SIZE+1;
+
   std::cout << "Pre Sort: ";
   for(int i = 0; i < SIZE; i++)
     std::cout << nums[i] << " ";
+
   sortArr(nums, SIZE);
 
   return 0;
@@ -25,10 +28,8 @@ int main()
 void sortArr(int* nums, int size)
 {
   int low, high;
-  bool sorted = false;
-  do
+  while(!isSorted(nums, size)) 
   {
-    sorted = isSorted(nums, size);
     for(int i = 0; i < size; i++)
     {
       if(i != size-1 && nums[i] > nums[i+1])
@@ -40,8 +41,8 @@ void sortArr(int* nums, int size)
       }
     }
 
-  } while (!sorted);
-  std::cout << "\n" << "Sorted: ";
+  }
+  std::cout << "\n\n" << "Sorted: ";
   for(int i = 0; i < size; i++)
     std::cout << nums[i] << " ";
 }
@@ -52,6 +53,7 @@ bool isSorted(int* nums, int size)
   {
     if(i != size-1 && nums[i] > nums[i+1])
       return false;
+
     else if(i != 0 && nums[i] < nums[i-1])
       return false;
   }
