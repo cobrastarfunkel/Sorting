@@ -35,9 +35,8 @@ void sortArr(int* nums, int size)
       if(i != size-1 && nums[i] > nums[i+1])
       {
           low = nums[i+1];
-          high = nums[i];
+          nums[i+1] = nums[i];
           nums[i] = low;
-          nums[i+1] = high;
       }
     }
 
